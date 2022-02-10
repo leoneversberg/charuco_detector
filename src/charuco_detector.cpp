@@ -138,7 +138,7 @@ namespace charuco_detector {
 			}
 
 			for (int i = 0; i < 5; i++) {
-				camera_distortion_coefficients_matrix.at<double>(0, i) = _msg->D[i];
+				//camera_distortion_coefficients_matrix.at<double>(0, i) = _msg->D[i];
 			}
 		} else {
 			ROS_WARN("Received invalid camera intrinsics (K all zeros)");
@@ -298,7 +298,7 @@ namespace charuco_detector {
 
 		if (valid_pose) {
 			if (_image_with_detection_results.needed()) {
-				float axisLength = 0.5f * (static_cast<float>(std::min(number_of_squares_in_x_, number_of_squares_in_y_) * (squares_sides_size_m_)));
+				float axisLength = 1.5f * (static_cast<float>(std::min(number_of_squares_in_x_, number_of_squares_in_y_) * (squares_sides_size_m_)));
 				cv::aruco::drawAxis(_image_with_detection_results, _camera_intrinsics, _camera_distortion_coefficients, _camera_rotation_out, _camera_translation_out, axisLength);
 			}
 
